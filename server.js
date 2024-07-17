@@ -26,8 +26,8 @@ app.use("/user",userRoutes);
 
 
 //Listening to PORT 👇👇
-
-app.listen(process.env.PORT,()=>{
+const port = process.env.PORT || 5000;
+app.listen(port,()=>{
     console.log(`App listening at port ${process.env.PORT}`);
 })
 
