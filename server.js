@@ -10,7 +10,11 @@ require("dotenv").config();
 app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"));
+const server = http.createServer(app);
 
+// Setting the keepAliveTimeout and headersTimeout
+server.keepAliveTimeout = 120000; // 120 seconds
+server.headersTimeout = 120000; // 120 seconds
 
 
 //Connecting to mongoose
@@ -27,7 +31,7 @@ app.use("/user",userRoutes);
 
 //Listening to PORT 👇👇
 const port = process.env.PORT || 5000;
-app.listen(port,()=>{
+server.listen(port,()=>{
     console.log(`App listening at port ${process.env.PORT}`);
 })
 
