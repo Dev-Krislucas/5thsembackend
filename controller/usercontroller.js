@@ -7,7 +7,7 @@ exports.signup=async(req,res)=>{
     let newUser  = await User.create(req.body);
     
 
-    const token = jwt.sign({id:newUser._id},process.env.secret);
+    const token = jwt.sign({id:newUser._id},process.env.SECRET);
     res.status(200).json({
         token,
         status:true,
