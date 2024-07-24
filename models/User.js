@@ -22,10 +22,18 @@ const userSchema = new mongoose.Schema({
     number:{
         type:String,
         required:[true,'A user must have number']
-    }
+    },
+    cart:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"Product"
+        }
+    ]
 
 })
-
+userSchema.methods.authenticate = function(password){
+    return this.password === password;
+}
 
 const User = new mongoose.model("User",userSchema);
 
