@@ -42,7 +42,7 @@ exports.getProductByCategory = async(req,res,next)=>{
     //error handler 👇👇👇
 
     res.status(200).json({
-        message:"Products of a specific category",
+        message:`Products of ${category} category`,
         products
 
     })
