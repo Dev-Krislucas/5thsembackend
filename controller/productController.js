@@ -33,3 +33,18 @@ exports.getSpecificProduct = async(req,res,next)=>{
         product 
     })
 }
+
+exports.getProductByCategory = async(req,res,next)=>{
+    let category = req.params.category;
+    console.log("inside category method")
+    let products = await Product.find({category});
+
+    //error handler 👇👇👇
+
+    res.status(200).json({
+        message:"Products of a specific category",
+        products
+
+    })
+
+}
