@@ -3,6 +3,7 @@ const { getAllProducts, createProduct, getSpecificProduct, getProductByCategory 
 const router = express.Router();
 
 
+
 router.route("/").get(getAllProducts).post(createProduct);
 router.route("/:id").get(getSpecificProduct);
 router.route("/get/:category").get(getProductByCategory);

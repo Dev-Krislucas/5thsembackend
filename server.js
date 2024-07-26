@@ -28,7 +28,10 @@ mongoose.connect(process.env.DB).then((res)=>{console.log("Connected to database
 const userRoutes = require('./routes/userRoutes');
 const productRoutes = require('./routes/productroutes');
 app.use("/user",userRoutes);
+
 app.use("/product",productRoutes);
+
+
 
 
 //Listening to PORT 👇👇

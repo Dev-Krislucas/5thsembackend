@@ -25,21 +25,27 @@ const userSchema = new mongoose.Schema({
     },
     cart:[
         {
-            type:mongoose.Schema.Types.ObjectId,
-            ref:"Product"
+            type:String
         }
+     
     ]
 
 })
 userSchema.methods.authenticate = function(password){
     return this.password === password;
 }
-userSchema.methods.addToCart = async function(productId){
-    this.cart.push(productId);
-    await this.save();
+userSchema.methods.addToCart = async function(product){
+    
+        this.cart.push(product);
+        await this.save();
+    
+        
+    
+    
 
 
 }
+
 
 const User = new mongoose.model("User",userSchema);
 
