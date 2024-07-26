@@ -34,6 +34,12 @@ const userSchema = new mongoose.Schema({
 userSchema.methods.authenticate = function(password){
     return this.password === password;
 }
+userSchema.methods.addToCart = async function(productId){
+    this.cart.push(productId);
+    await this.save();
+
+
+}
 
 const User = new mongoose.model("User",userSchema);
 

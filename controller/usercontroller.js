@@ -10,6 +10,7 @@ exports.signup=async(req,res)=>{
 
     const token = jwt.sign({id:newUser._id},process.env.SECRET);
     res.status(201).json({
+        newUser,
         token,
         status:true,
         message:"User created !!"
