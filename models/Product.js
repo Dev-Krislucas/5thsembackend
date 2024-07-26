@@ -7,6 +7,10 @@ const productSchema = new mongoose.Schema({
 
 
     },
+    image:[{
+        type:String
+    }],
+    
     price:{
         type:Number,
         required:[1,"Product must have a name"]
