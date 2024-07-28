@@ -7,7 +7,7 @@ router.route('/signup').post(signup);
 
 router.route('/').get(getAllUsers);
 
-router.route("/:id/addtocart").post(addToCart);
+router.route("/addtocart").post(addToCart);
 router.route("/:id/getcart").get(getCart);
 
 

@@ -61,13 +61,11 @@ exports.login = async(req,res,next)=>{
 }
 exports.addToCart = async(req,res,next)=>{
 try{
-    let userId = req.params.id;
+    let userId = req.body.id;
     let product = req.body.product;
 
     let user = await User.findById(userId);
     // let product = await Product.findById(productId);
-
-
     if(!user){
         return next(new AppError("user not found ",404));
 
