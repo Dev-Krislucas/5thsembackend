@@ -106,6 +106,24 @@ try{
 }
 }
 
+exports.removeFromCart= async(req,res)=>{
+    let id = req.body.id;
+    let productId = req.body.productId;
+    let user = await User.findById(id);
+
+    if(!user){
+        return res.status(404).json({
+            message:'User not found'
+        })
+
+    }
+
+    await user.removeFromCart(productId);
+    res.status(200).json({
+        message:`Item removed from cart of ${user.name}` 
+    })
+}
+
 exports.getCart = async(req,res,next)=>{
     let id = req.params.id;
     let user = await User.findById(id);

@@ -38,12 +38,14 @@ userSchema.methods.addToCart = async function(product){
     
         this.cart.push(product);
         await this.save();
-    
-        
-    
-    
 
+}
 
+userSchema.methods.removeFromCart = async function(productId){
+    this.cart  = this.cart.filter(item=>{
+        return item !== productId;
+    })
+    await this.save();
 }
 
 
