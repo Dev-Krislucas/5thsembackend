@@ -46,7 +46,16 @@ exports.login = async(req,res,next)=>{
     if(!user){
         return res.status(400).json({
             token:"",
-            user:null
+            user:{
+                _id:"",
+                name:"user",
+                email:"",
+                password:"",
+                city:"",
+                number:"",
+                cart:[]
+                
+            }
 
 
         })
