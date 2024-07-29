@@ -41,18 +41,27 @@ exports.login = async(req,res,next)=>{
 
     }
 
-    const user = await user.findOne({email});
+    const user = await User.findOne({email});
 
     if(!user){
-        return next(new AppError("No user exists",404));
+        return res.status(400).json({
+            token:"",
+            user:null
 
+
+        })
     }
     const auth = await user.authenticate(password);
     if(!auth){
-        return next(new AppError(400,"Invalid credentials"));
+       return res.status(400).json({
+            token:"",
+            user:null
+
+
+        })
 
     }
-    const token = jwt.sign({id:_id},process.env.SECRET);
+    const token = jwt.sign({id:user._id},process.env.SECRET);
 
     res.status(200).json({
         token,
